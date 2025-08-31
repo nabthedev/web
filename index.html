@@ -2,16 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Classic Detailed Search Engine</title>
-    <meta name="description" content="A vintage academic-style web search engine powered by DuckDuckGo Instant Answers API." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A vintage academic-style web search engine with rich metadata and source analysis." />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&family=Georgia&display=swap" rel="stylesheet">
   </head>
   <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
+    <div id="app" class="vintage-background">
+      <header class="main-header">
+        <h1>Classic Detailed Search Engine</h1>
+        <p class="subtitle">A scholarly search experience inspired by classic academia</p>
+      </header>
+      <section class="search-section">
+        <form id="search-form" autocomplete="off">
+          <input id="search-box" class="search-box" type="text" placeholder="Enter your scholarly query..." aria-label="Search" />
+          <button type="submit" class="search-btn">Search</button>
+          <button type="button" id="adv-search-btn" class="adv-search-btn" aria-label="Advanced Search">&#9881;</button>
+        </form>
+        <div id="advanced-search" class="advanced-search hidden">
+          <!-- Advanced search options (date, type, level, etc.) will go here -->
+        </div>
+        <div id="search-suggestions" class="search-suggestions"></div>
+      </section>
+      <main id="results" class="results-area">
+        <!-- Dynamic search results will be injected here -->
+      </main>
+      <aside id="sidebar" class="sidebar">
+        <div class="bookmarks-section"></div>
+        <div class="history-section"></div>
+        <div class="reading-list-section"></div>
+      </aside>
+      <footer class="main-footer">
+        <span>Inspired by classic libraries &ndash; Powered by modern web tech</span>
+      </footer>
+    </div>
+    <script src="app.js" type="module"></script>
   </body>
 </html>
