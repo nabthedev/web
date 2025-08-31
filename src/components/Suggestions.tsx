@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/theme.css";
 
-// For demo purposes, use static suggestions.
 const suggestions = [
   "The influence of Renaissance libraries on modern information science",
   "Comparative analysis of academic search engines",
