@@ -5,7 +5,7 @@ import Suggestions from "./components/Suggestions";
 import ResearchTrail from "./components/ResearchTrail";
 import Bookmarks from "./components/Bookmarks";
 import History from "./components/History";
-import { mockSearch } from "./mock/searchApi";
+import { bingSearch } from "./api/bingSearch";
 import "./styles/theme.css";
 
 function App() {
@@ -17,16 +17,21 @@ function App() {
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSearch = async (q: string, options: any) => {
+  const handleSearch = async (q, options) => {
     setLoading(true);
     setQuery(q);
-    const res = await mockSearch(q, options);
-    setResults(res);
-    setHistory([{ query: q, date: new Date() }, ...history]);
+    try {
+      const res = await bingSearch(q, options);
+      setResults(res);
+      setHistory([{ query: q, date: new Date() }, ...history]);
+    } catch (err) {
+      setResults([]);
+      alert("Search failed: Check your API key or network.");
+    }
     setLoading(false);
   };
 
-  const handleBookmark = (result: any) => {
+  const handleBookmark = (result) => {
     setBookmarks([result, ...bookmarks.filter(b => b.id !== result.id)]);
   };
 
