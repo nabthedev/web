@@ -9,14 +9,9 @@ export async function bingSearch(query, options = {}) {
   });
 
   // DuckDuckGo doesn't support advanced options, but you could append them to the query string if desired.
-  // For example: q = `${query} ${options.contentType || ""} ${options.readingLevel || ""}`
 
   const response = await fetch(`https://api.duckduckgo.com/?${params.toString()}`);
   const data = await response.json();
-
-  // Map DuckDuckGo response to your result card format.
-  // DuckDuckGo only returns "related topics" and "abstract" content, not full search results.
-  // For demo, we treat RelatedTopics as results and use FirstURL, Text, etc.
 
   // Helper to flatten RelatedTopics (which can be nested)
   function flattenTopics(arr) {
