@@ -5,11 +5,9 @@ type Props = {
   results: any[];
 };
 
-// For demo, a simple connection between topics as lines.
 function ResearchTrail({ results }: Props) {
   if (!results.length) return null;
 
-  // Collect unique topics and draw lines.
   const topics = [
     ...new Set(results.flatMap((r) => r.relatedTopics))
   ];
@@ -21,9 +19,7 @@ function ResearchTrail({ results }: Props) {
         {topics.map((t, i) => (
           <span className="trail-topic" key={i}>{t}</span>
         ))}
-        {/* For demo, lines between topics omitted. */}
       </div>
-      {/* In production, use a graph library for topic connections */}
     </section>
   );
 }
